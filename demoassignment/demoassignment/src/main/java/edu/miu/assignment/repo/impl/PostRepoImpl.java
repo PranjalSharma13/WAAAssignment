@@ -11,23 +11,24 @@ import java.util.List;
 public class PostRepoImpl implements PostRepo {
     @Override
     public List<Post> findAll() {
-        return posts;
+        return null;
     }
-    private static List<Post> posts=new ArrayList<>();
-    static {
-        posts.add(new Post(1L, "First Post", "This is the content of the first post.", "Author1"));
-        posts.add(new Post(2L, "Second Post", "This is the content of the second post.", "Author2"));
-        posts.add(new Post(3L, "Third Post", "This is the content of the third post.", "Author3"));
-    }
+//    private static List<Post> posts=new ArrayList<>();
+//    static {
+//        posts.add(new Post(1L, "First Post", "This is the content of the first post.", "Author1"));
+//        posts.add(new Post(2L, "Second Post", "This is the content of the second post.", "Author2"));
+//        posts.add(new Post(3L, "Third Post", "This is the content of the third post.", "Author3"));
+//    }
     @Override
     public Post findPostById(long id)
     {
-    return  posts.stream().filter(l->l.getId()==id).findFirst().orElse(null);
+//    return  posts.stream().filter(l->l.getId()==id).findFirst().orElse(null);
+        return null;
     }
 
     @Override
     public void addPost(Post post)
     {
-        posts.add(post);
+//        posts.add(post);
     }
 }

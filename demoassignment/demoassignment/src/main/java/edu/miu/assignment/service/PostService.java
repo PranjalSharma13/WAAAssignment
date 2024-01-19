@@ -1,6 +1,5 @@
 package edu.miu.assignment.service;
 
-import edu.miu.assignment.entity.Post;
 import edu.miu.assignment.entity.dto.response.PostDto;
 
 import java.util.List;
