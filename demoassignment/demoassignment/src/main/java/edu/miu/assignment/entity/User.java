@@ -22,7 +22,7 @@ public class User {
     private long id;
     String name;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<Post> posts;
 }

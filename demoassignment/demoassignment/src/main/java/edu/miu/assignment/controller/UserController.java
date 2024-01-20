@@ -17,9 +17,11 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping
-    public List<UserResponseDto> findAll()
+    public List<UserResponseDto> findAll(@RequestParam(required = false, defaultValue = "false") boolean havingMoreThan1Pos,
+                                         @RequestParam(required = false, defaultValue = "0") int numberOfPosts,
+                                         @RequestParam(required = false, defaultValue = "") String title)
     {
-        return userService.findAll();
+        return userService.findAll(havingMoreThan1Pos,numberOfPosts,title);
     }
     @PostMapping
     public void createUser(@RequestBody UserRequestDto userDto){
@@ -33,5 +35,11 @@ public class UserController {
     @GetMapping ("/{id}/posts")
     public List<PostDto> getPostFromUserId(@PathVariable long id){
         return userService.getPostFromUserId(id);
+    }
+
+    @DeleteMapping ("/{id}")
+    public void deleteUser(@PathVariable long id)
+    {
+        userService.deleteUser(id);
     }
 }
