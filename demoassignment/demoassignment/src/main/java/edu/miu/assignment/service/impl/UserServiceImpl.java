@@ -1,5 +1,6 @@
 package edu.miu.assignment.service.impl;
 
+import edu.miu.assignment.aop.annotation.ExecutionTime;
 import edu.miu.assignment.entity.Post;
 import edu.miu.assignment.entity.User;
 import edu.miu.assignment.entity.dto.request.UserRequestDto;
@@ -59,6 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @ExecutionTime
     public UserResponseDto getUserFromId(long id) {
         return userRepo.findById(Math.toIntExact(id))
                 .map(user -> modelMapper.map(user, UserResponseDto.class))
