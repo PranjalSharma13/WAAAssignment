@@ -60,7 +60,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @ExecutionTime
     public UserResponseDto getUserFromId(long id) {
         return userRepo.findById(Math.toIntExact(id))
                 .map(user -> modelMapper.map(user, UserResponseDto.class))

@@ -1,5 +1,6 @@
 package edu.miu.assignment.controller;
 
+import edu.miu.assignment.aop.annotation.LogMe;
 import edu.miu.assignment.entity.dto.request.UserRequestDto;
 import edu.miu.assignment.entity.dto.response.PostDto;
 import edu.miu.assignment.entity.dto.response.UserResponseDto;
@@ -27,9 +28,17 @@ public class UserController {
     public void createUser(@RequestBody UserRequestDto userDto){
         userService.addNewUser(userDto);
     }
+    @LogMe
     @GetMapping ("/{id}")
     public UserResponseDto getUserFromId(@PathVariable long id){
         return userService.getUserFromId(id);
+    }
+
+    @LogMe
+    @GetMapping ("/exception")
+    public void getException() throws Exception {
+        // Simulate an exception being thrown
+        throw new Exception("Simulated exception in getException method");
     }
 
     @GetMapping ("/{id}/posts")
