@@ -1,5 +1,6 @@
 package edu.miu.assignment.controller;
 
+import edu.miu.assignment.aop.annotation.ExecutionTime;
 import edu.miu.assignment.aop.annotation.LogMe;
 import edu.miu.assignment.entity.dto.request.UserRequestDto;
 import edu.miu.assignment.entity.dto.response.PostDto;
@@ -28,6 +29,7 @@ public class UserController {
     public void createUser(@RequestBody UserRequestDto userDto){
         userService.addNewUser(userDto);
     }
+    @ExecutionTime
     @LogMe
     @GetMapping ("/{id}")
     public UserResponseDto getUserFromId(@PathVariable long id){
