@@ -20,9 +20,14 @@ public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    String name;
+    private String email;
+    private String name;
+    private String password;
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<Post> posts;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable
+    private List<Role> roles;
 }
